@@ -109,6 +109,14 @@ public:
 			<< "Rairity : " << Info[num].GetRarity();
 	}
 
+	
+public:
+	//Getter ÇÔ¼öµé.
+	Vector<Card> GetInfo() const
+	{
+		return Info;
+	}
+
 private:
 
 	Vector<Card> Info;

@@ -112,27 +112,25 @@ public:
 	}
 
 private:
-	void ReAllocate(int newCapacity) //capacity 동적으로 증가시키는 함수.
+	void ReAllocate(int newCapacity)
 	{
-		//1. 새로운 공간할당.
+		// 1. 새로운 공간 할당 (크기 확장해서)
+
+		// 기존 크기에 2배 확장.
+		//int newCapacity = capacity * 2;
 		T* newBlock = new T[newCapacity];
-		memset(newBlock, 0, sizeof(int) * newCapacity);
+		memset(newBlock, 0, sizeof(T) * newCapacity);
 
-		//data의 값을 비어있는 배열인 newBlock에 복사시키기.
-		memcpy(newBlock, data, sizeof(int) * capacity);
-
-		//아래 for문과 같음.
-		//for (int i = 0; i < capacity; ++i)
+		// 2. 기존 값 복사/이동.
+		memcpy(newBlock, data, sizeof(T) * capacity);
+		//for (int ix = 0; ix < capacity; ++ix)
 		//{
-		//	newBlock[i] = data[i]; //위 memcpy와 동일한 과정. 근데 memcpy가 더 빠름.
+		//	newBlock[ix] = std::move(data[ix]);
 		//}
 
-		//이제 데이터 옮기기.
+		// 3. 다쓴 메모리 공간 해제 및 업데이트.
 		delete[] data;
-		data = nullptr;
-
 		data = newBlock;
-
 		capacity = newCapacity;
 	}
 private:
