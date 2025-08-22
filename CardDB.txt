@@ -1,4 +1,3 @@
-id,name,type,cost,rarity
 1,Fireball,Spell,4,2
 2,Guardian,Unit,3,1
 3,Healing Touch,Spell,2,1

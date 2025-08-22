@@ -1,10 +1,9 @@
-#include "Vector.h"
-
+#include "Deck.h"
+#include <Windows.h>
 int main()
 {
-	Vector<int>v1;
+	Deck deck;
+	deck.ReadDeckFile();
+	deck.ViewCardInfo(2);
 
-	v1.Push_Back(2);
-
-	std::cout << v1[0];
 }
