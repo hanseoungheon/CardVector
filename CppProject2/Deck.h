@@ -97,22 +97,23 @@ public:
 			token = strtok_s(nullptr, "\n", &context);
 			//그 다음 줄 분리
 		}
+		
 	}
 
 	void ViewCardInfo(int num)
 	{
 		std::cout
-			<< "Id: " << Info[num].GetId() << "\n"
-			<< "Name : " << Info[num].GetName() << "\n"
-			<< "Type : " << Info[num].GetType() << "\n"
-			<< "Cost : " << Info[num].GetCost() << "\n"
-			<< "Rairity : " << Info[num].GetRarity();
+			<< "                                                  Id: " << Info[num].GetId() << "\n"
+			<< "                                                  Name : " << Info[num].GetName() << "\n"
+			<< "                                                  Type : " << Info[num].GetType() << "\n"
+			<< "                                                  Cost : " << Info[num].GetCost() << "\n"
+			<< "                                                  Rairity : " << Info[num].GetRarity();
 	}
 
 	
 public:
 	//Getter 함수들.
-	Vector<Card> GetInfo() const
+	const Vector<Card>& GetInfo() const
 	{
 		return Info;
 	}
