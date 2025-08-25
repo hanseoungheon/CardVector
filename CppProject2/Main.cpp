@@ -2,6 +2,8 @@
 #include "Input.h"
 int main()
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	static int num = 0;
 	Deck deck;
 	deck.ReadDeckFile();
@@ -14,6 +16,7 @@ int main()
 	//std::cout << "\n" << num;
 	while (true) //그냥 while문 사용하면 될듯?
 	{
+		
 		//std::cout << "\n" << num;
 		input.SavePreviouseKeyStates();
 
@@ -55,3 +58,8 @@ int main()
 
 	}
 }
+
+enum asd
+{
+
+};

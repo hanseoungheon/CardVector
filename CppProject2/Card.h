@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
-
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+#include "Core.h"
 class Card
 {
 public:
@@ -28,6 +31,12 @@ public:
 		}
 	}
 
+	~Card()
+	{
+		//_CrtSetBreakAlloc(162);
+		SafeDelete(name);
+		SafeDelete(type);
+	}
 
 public:
 	//Getter 만 Setter는 필요없을듯?

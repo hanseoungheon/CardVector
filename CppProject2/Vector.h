@@ -30,6 +30,18 @@ public:
 		++size;
 	}
 
+	void Push_Back(const T*& newData)
+	{
+		if (size == capacity)
+		{
+			ReAllocate( 2 * capacity);
+		}
+
+		data[size] = *newData;
+
+		++size;
+	}
+
 	void Push_Back(T&& newData_RValue) //오버로딩.
 	{
 		if (size == capacity)
@@ -117,7 +129,7 @@ private:
 		// 1. 새로운 공간 할당 (크기 확장해서)
 
 		// 기존 크기에 2배 확장.
-		//int newCapacity = capacity * 2;
+		newCapacity = capacity * 2;
 		T* newBlock = new T[newCapacity];
 		memset(newBlock, 0, sizeof(T) * newCapacity);
 

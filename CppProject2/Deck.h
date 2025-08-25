@@ -14,8 +14,23 @@ public:
 
 	}
 
+	~Deck()
+	{
+		//delete Info[0];
+		for (Card* card : Info)
+		{
+			_CrtSetBreakAlloc(162);
+			SafeDelete(card);
+
+		}
+
+		//if(Info[0] != nullptr)
+		//	delete Info[0];
+	}
+
 	void ReadDeckFile()
 	{
+		//_CrtSetBreakAlloc(162);
 		FILE* file = nullptr;
 		const char* Path = "../CardDB.txt";
 		fopen_s(&file, Path, "rt");
@@ -92,33 +107,33 @@ public:
 			//어차피 뒤에는 ,가 없음
 
 			//이제 덱에 카드 추가하기.
-			Info.Push_Back(Card(cardId, cardName, cardType, cardCost, cardRarity));
+			Info.Push_Back(new Card(cardId, cardName, cardType, cardCost, cardRarity));
 
 			token = strtok_s(nullptr, "\n", &context);
 			//그 다음 줄 분리
 		}
-		
+
 	}
 
 	void ViewCardInfo(int num)
 	{
 		std::cout
-			<< "                                                  Id: " << Info[num].GetId() << "\n"
-			<< "                                                  Name : " << Info[num].GetName() << "\n"
-			<< "                                                  Type : " << Info[num].GetType() << "\n"
-			<< "                                                  Cost : " << Info[num].GetCost() << "\n"
-			<< "                                                  Rairity : " << Info[num].GetRarity();
+			<< "                                                  Id: " << Info[num]->GetId() << "\n"
+			<< "                                                  Name : " << Info[num]->GetName() << "\n"
+			<< "                                                  Type : " << Info[num]->GetType() << "\n"
+			<< "                                                  Cost : " << Info[num]->GetCost() << "\n"
+			<< "                                                  Rairity : " << Info[num]->GetRarity();
 	}
 
 	
 public:
 	//Getter 함수들.
-	const Vector<Card>& GetInfo() const
+	const Vector<Card*>& GetInfo() const
 	{
 		return Info;
 	}
 
 private:
 
-	Vector<Card> Info;
+	Vector<Card*> Info;
 };
